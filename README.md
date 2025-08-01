@@ -52,3 +52,10 @@ Production-ready deployment guides for Vercel and Netlify.
 A lean repository blueprint that’s effortless to maintain.
 
 A polished AI usage report (this document) that underscores my proficiency in prompt engineering and systematic delegation.
+
+<img width="1000" height="600" alt="admybrand_revenue_chart" src="https://github.com/user-attachments/assets/d5bf55ff-43b9-427a-8362-0090cc26927f" />
+<img width="1000" height="600" alt="traffic_sources_donut" src="https://github.com/user-attachments/assets/fd7529f0-04e9-43f6-a627-9ce6585c0156" />
+<img width="1000" height="600" alt="campaign_roas_chart" src="https://github.com/user-attachments/assets/f7a13974-8513-47f4-a608-95f43033b1a4" />
+
+
+
