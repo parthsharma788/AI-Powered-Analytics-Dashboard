@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADmyBRAND Insights - Analytics Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">ADmyBRAND</div>
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Loading your insights...</div>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div id="app" class="app hidden">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <button class="sidebar-toggle" id="sidebar-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <div class="logo">
+                        <span class="logo-text">ADmyBRAND</span>
+                        <span class="logo-subtitle">Insights</span>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <button class="theme-toggle" id="theme-toggle" title="Toggle theme">
+                        <span class="theme-icon light-icon">☀️</span>
+                        <span class="theme-icon dark-icon">🌙</span>
+                    </button>
+                    <div class="user-profile">
+                        <div class="user-avatar">JD</div>
+                        <div class="user-info">
+                            <div class="user-name">John Doe</div>
+                            <div class="user-role">Marketing Manager</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <nav class="sidebar-nav">
+                <a href="#dashboard" class="nav-item active" data-section="dashboard">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a href="#campaigns" class="nav-item" data-section="campaigns">
+                    <span class="nav-icon">🎯</span>
+                    <span class="nav-text">Campaigns</span>
+                </a>
+                <a href="#analytics" class="nav-item" data-section="analytics">
+                    <span class="nav-icon">📈</span>
+                    <span class="nav-text">Analytics</span>
+                </a>
+                <a href="#reports" class="nav-item" data-section="reports">
+                    <span class="nav-icon">📋</span>
+                    <span class="nav-text">Reports</span>
+                </a>
+                <a href="#settings" class="nav-item" data-section="settings">
+                    <span class="nav-icon">⚙️</span>
+                    <span class="nav-text">Settings</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section id="dashboard-section" class="content-section active">
+                <div class="section-header">
+                    <h1 class="section-title">Dashboard Overview</h1>
+                    <div class="section-actions">
+                        <button class="btn btn--outline btn--sm" id="refresh-data">
+                            <span class="refresh-icon">↻</span>
+                            Refresh
+                        </button>
+                        <button class="btn btn--secondary btn--sm" id="export-data">
+                            <span class="export-icon">↓</span>
+                            Export
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Key Metrics Cards -->
+                <div class="metrics-grid">
+                    <div class="metric-card" id="revenue-card">
+                        <div class="metric-icon revenue-icon">💰</div>
+                        <div class="metric-content">
+                            <div class="metric-label">Total Revenue</div>
+                            <div class="metric-value" id="total-revenue">$0</div>
+                            <div class="metric-change positive" id="revenue-change">
+                                <span class="change-icon">↗</span>
+                                <span class="change-text">+0%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card" id="users-card">
+                        <div class="metric-icon users-icon">👥</div>
+                        <div class="metric-content">
+                            <div class="metric-label">Total Users</div>
+                            <div class="metric-value" id="total-users">0</div>
+                            <div class="metric-change positive" id="users-change">
+                                <span class="change-icon">↗</span>
+                                <span class="change-text">+0%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card" id="conversions-card">
+                        <div class="metric-icon conversion-icon">🎯</div>
+                        <div class="metric-content">
+                            <div class="metric-label">Conversion Rate</div>
+                            <div class="metric-value" id="conversion-rate">0%</div>
+                            <div class="metric-change positive" id="conversion-change">
+                                <span class="change-icon">↗</span>
+                                <span class="change-text">+0%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card" id="growth-card">
+                        <div class="metric-icon growth-icon">📈</div>
+                        <div class="metric-content">
+                            <div class="metric-label">Growth Rate</div>
+                            <div class="metric-value" id="growth-rate">0%</div>
+                            <div class="metric-change positive" id="growth-change">
+                                <span class="change-icon">↗</span>
+                                <span class="change-text">+0%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="charts-section">
+                    <div class="chart-tabs">
+                        <button class="chart-tab active" data-chart="revenue">Revenue Trends</button>
+                        <button class="chart-tab" data-chart="campaigns">Campaign Performance</button>
+                        <button class="chart-tab" data-chart="traffic">Traffic Sources</button>
+                    </div>
+                    
+                    <div class="chart-container" style="position: relative; height: 400px;">
+                        <!-- Revenue Chart -->
+                        <div id="revenue-chart-container" class="chart-panel active">
+                            <canvas id="revenue-chart"></canvas>
+                        </div>
+                        
+                        <!-- Campaign Chart -->
+                        <div id="campaign-chart-container" class="chart-panel">
+                            <canvas id="campaign-chart"></canvas>
+                        </div>
+                        
+                        <!-- Traffic Chart -->
+                        <div id="traffic-chart-container" class="chart-panel">
+                            <canvas id="traffic-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Campaign Table -->
+                <div class="table-section">
+                    <div class="table-header">
+                        <h3 class="table-title">Campaign Performance</h3>
+                        <div class="table-controls">
+                            <div class="search-container">
+                                <input type="text" id="campaign-search" class="form-control" placeholder="Search campaigns...">
+                            </div>
+                            <select id="status-filter" class="form-control">
+                                <option value="">All Status</option>
+                                <option value="active">Active</option>
+                                <option value="paused">Paused</option>
+                                <option value="completed">Completed</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table class="data-table" id="campaigns-table">
+                            <thead>
+                                <tr>
+                                    <th class="sortable" data-column="name">Campaign Name</th>
+                                    <th class="sortable" data-column="type">Type</th>
+                                    <th class="sortable" data-column="status">Status</th>
+                                    <th class="sortable" data-column="impressions">Impressions</th>
+                                    <th class="sortable" data-column="clicks">Clicks</th>
+                                    <th class="sortable" data-column="conversions">Conversions</th>
+                                    <th class="sortable" data-column="cost">Cost</th>
+                                    <th class="sortable" data-column="roas">ROAS</th>
+                                </tr>
+                            </thead>
+                            <tbody id="campaigns-tbody">
+                                <!-- Table rows will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="table-pagination">
+                        <div class="pagination-info">
+                            <span id="pagination-info">Showing 1-6 of 6 campaigns</span>
+                        </div>
+                        <div class="pagination-controls">
+                            <button class="pagination-btn" id="prev-page" disabled>&laquo; Previous</button>
+                            <button class="pagination-btn" id="next-page" disabled>Next &raquo;</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Other sections (placeholder) -->
+            <section id="campaigns-section" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">Campaign Management</h1>
+                </div>
+                <div class="coming-soon">
+                    <h3>Coming Soon</h3>
+                    <p>Advanced campaign management features will be available here.</p>
+                </div>
+            </section>
+
+            <section id="analytics-section" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">Advanced Analytics</h1>
+                </div>
+                <div class="coming-soon">
+                    <h3>Coming Soon</h3>
+                    <p>Deep dive analytics and custom reports will be available here.</p>
+                </div>
+            </section>
+
+            <section id="reports-section" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">Reports</h1>
+                </div>
+                <div class="coming-soon">
+                    <h3>Coming Soon</h3>
+                    <p>Automated reporting and scheduled exports will be available here.</p>
+                </div>
+            </section>
+
+            <section id="settings-section" class="content-section">
+                <div class="section-header">
+                    <h1 class="section-title">Settings</h1>
+                </div>
+                <div class="coming-soon">
+                    <h3>Coming Soon</h3>
+                    <p>Account settings and preferences will be available here.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Real-time Update Indicator -->
+    <div id="update-indicator" class="update-indicator hidden">
+        <span class="update-dot"></span>
+        <span class="update-text">Live updates</span>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
