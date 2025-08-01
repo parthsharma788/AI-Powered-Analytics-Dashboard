@@ -3,7 +3,7 @@
 ## AI Usage Report
 Below is a concise recap of how I leveraged AI during the “ADmyBRAND Insights” dashboard project—what prompts I issued, which assistant capabilities I tapped, and the outputs they produced.
 
-## How I Orchestrated the Build with AI:
+## How I Orchestrated the Build with AI
 I began by outlining a holistic vision for the analytics dashboard—clarifying objectives, must-have features, and aspirational extras. From there, I guided the assistant through a series of incremental, tightly-scoped tasks, ensuring each response built cleanly on the last.
 
 ### Establishing the Blueprint:
